@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindHackX - OSINT Vyhledávač</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        header {
+            background-color: #0a192f;
+            color: #ffffff;
+            padding: 2rem;
+            text-align: center;
+        }
+        section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        form {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 1rem;
+            margin: 1rem 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .results {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            display: none;
+        }
+        footer {
+            background-color: #0a192f;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+    <script>
+        function showResults(event) {
+            event.preventDefault();
+            const results = document.querySelector('.results');
+            const input = document.getElementById('search').value;
+
+            if (input.trim() !== '') {
+                results.innerHTML = `
+                    <h2>Výsledky vyhledávání pro: "${input}"</h2>
+                    <ul>
+                        <li><strong>Jméno:</strong> Jan Novák</li>
+                        <li><strong>Telefon:</strong> +420123456789</li>
+                        <li><strong>E-mail:</strong> jan.novak@email.cz</li>
+                        <li><strong>Sociální sítě:</strong> Aktivní na Instagramu, Facebooku</li>
+                        <li><strong>Poslední výskyt:</strong> Praha, 15. března 2024</li>
+                    </ul>
+                `;
+                results.style.display = 'block';
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>MindHackX</h1>
+        <p>Najděte veřejně dostupné informace rychle a snadno.</p>
+    </header>
+
+    <section>
+        <form onsubmit="showResults(event)">
+            <label for="search">Zadejte telefonní číslo, jméno, e-mail nebo odkaz na sociální síť:</label>
+            <input type="text" id="search" name="search" placeholder="Např. +420123456789 nebo Jan Novák">
+            <button type="submit">Vyhledat</button>
+        </form>
+
+        <div class="results"></div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 MindHackX - OSINT Vyhledávač</p>
+    </footer>
+</body>
+</html>
